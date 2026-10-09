@@ -1,33 +1,30 @@
 #include <iostream>
 
-using namespace std;
+class Number {
+private:
+    int value;
 
+public:
+    explicit Number(int givenValue) : value(givenValue) {}
 
-// Same function name, different parameters
-int sum(int a, int b)
-{
-    return a + b;
-}
+    Number operator-() const {
+        return Number(-value);
+    }
 
-double sum(double a, double b)
-{
-    return a + b;
-}
+    void display() const {
+        std::cout << value << '\n';
+    }
+};
 
-int sum(int a, int b, int c)
-{
-    return a + b + c;
-}
+int main() {
+    Number first(25);
+    Number second = -first;
 
-
-int main()
-{
-    cout << "Two integers: " << sum(15, 25) << endl;
-
-    cout << "Two doubles: " << sum(3.5, 4.2) << endl;
-
-    cout << "Three integers: " << sum(10, 20, 30) << endl;
-
+    std::cout << "Original value: ";
+    first.display();
+    
+    std::cout << "Negated value: ";
+    second.display();
 
     return 0;
 }
